@@ -25,7 +25,8 @@ namespace TestApp
             while (true)
             {
                 Console.WriteLine("\nType 'self' if you would like to enter the amount of live germs, or\n" +
-                "type 'random' if you want the computer to randomly generate the number of live germs\n");
+                "Type 'random' if you want the computer to randomly generate the number of live germs\n" +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
                 string countChoice = Console.ReadLine();
 
@@ -210,7 +211,8 @@ namespace TestApp
             bool flag1 = true;
             while (flag1)
             {
-                Console.WriteLine("Press <Enter> to continue with the program or type 'quit' to end the program");
+                Console.WriteLine("Press <Enter> to continue with the program or type 'quit' to end the program\n" +
+                    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
                 string checkChoice = Console.ReadLine();
                 if (checkChoice.Equals(""))
                 {
@@ -234,7 +236,8 @@ namespace TestApp
         static void chemApp()
         {
             //Create list of chemical products
-            string menu = "Type the number of the chemical you will be using from this list:\n\n";
+            string menu = "Type the number of the chemical you will be using from this list:\n" +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
             for (int chemNum = 0; chemNum < chemList.Count; chemNum++)
             {
                 menu += $"{chemNum + 1}. {chemList[chemNum]}\n";
@@ -253,11 +256,14 @@ namespace TestApp
                     //Test number
                     Console.WriteLine($"Test {testNum}");
 
-                    checkBeforeGC("Enter the amount of live germs present\n", 249, 501);
+                    checkBeforeGC("Enter the amount of live germs present\n" +
+                        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n", 249, 501);
 
-                    checkChemTime("Enter how long the germs have been in the chemicals (minutes)\n", 0, 61);
+                    checkChemTime("Enter how long the germs have been in the chemicals (minutes)\n" +
+                        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n", 0, 61);
 
-                    checkAfterGC("How many live germs are left\n", -1, 251);
+                    checkAfterGC("How many live germs are left\n" +
+                        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n", -1, 251);
 
                     //Calculate the efficiency rating
                     double chemRating = (beforeGermCount - afterGermCount) / chemTime;
@@ -298,18 +304,21 @@ namespace TestApp
 
                     beforeGermCount = rand_germ.Next(500, 1000);
                     beforeGermCount = rand_germ.Next(250, 500);
-                    Console.WriteLine($"The amount of alive germs is: {beforeGermCount}\n");
+                    Console.WriteLine($"The amount of alive germs is: {beforeGermCount}\n" +
+                        $"~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
                     //Generate random time
                     Random rand_time = new Random();
                     chemTime = rand_time.Next(1, 60);
-                    Console.WriteLine($"The time the chemical was mixed with the germs is: { chemTime}\n");
+                    Console.WriteLine($"The time the chemical was mixed with the germs is: { chemTime}\n" +
+                        $"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
                     //Generate random number of germs after
                     Random rand_germ2 = new Random();
                     afterGermCount = rand_germ2.Next(1, 499);
                     afterGermCount = rand_germ2.Next(0, 250);
-                    Console.WriteLine($"The amount of alive germs after adding the chemical is: {afterGermCount}");
+                    Console.WriteLine($"The amount of alive germs after adding the chemical is: {afterGermCount}\n" +
+                        $"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
                     //Calculate the efficiency rating
                     double chemRating = (beforeGermCount - afterGermCount) / chemTime;
@@ -347,7 +356,9 @@ namespace TestApp
 
             chemListRating.Add((float)Math.Round(finalRating, 3));
 
-            Console.WriteLine($"{chemList[chosenChemIndex[chosenChemIndex.Count - 1]]} has a Final Efficiency Rating of {chemListRating[chemListRating.Count - 1]}\n");
+            Console.WriteLine("------------------------------------------------\n" +
+                $"{chemList[chosenChemIndex[chosenChemIndex.Count - 1]]} has a Final Efficiency Rating of {chemListRating[chemListRating.Count - 1]}|\n" +
+                $"------------------------------------------------");
         }
     }
 }
