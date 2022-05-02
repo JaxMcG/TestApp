@@ -135,25 +135,28 @@ namespace TestApp
 
                     int chemNameIndex = Convert.ToInt32(Console.ReadLine());
 
-                    if (chemNameIndex >= min && chemNameIndex <= max)
+                    if (chosenChemIndex.Contains(chemNameIndex - 1))
                     {
-                        return chemNameIndex - 1;
+                        Console.WriteLine("Error: You can't enter the same value more than once\n");
                     }
                     else
                     {
-                        Console.WriteLine(ErrorMSG);
+                        if (chemNameIndex >= min && chemNameIndex <= max)
+                        {
+                            return chemNameIndex - 1;
+                        }
+                        else
+                        {
+                            Console.WriteLine(ErrorMSG);
+                        }
                     }
+   
                 }
                 catch
                 {
                     Console.WriteLine(ErrorMSG);
                 }
             }
-        }
-
-        static void checkList()
-        {
-        
         }
 
         //Sorted List
